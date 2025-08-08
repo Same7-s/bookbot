@@ -1,18 +1,16 @@
-from stats import text_word_count, formatted_output
+from stats import text_word_count, formatted_output, get_book_text
+import sys
 
 
-def get_book_text(file_path):
-    with open(file_path) as f:
-        file_content = f.read()
-        return file_content
+if len(sys.argv) < 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
-BOOK_PATH = "./books/frankenstein.txt"
-frankenstein_book_text = get_book_text(BOOK_PATH)
-text_count = text_word_count(frankenstein_book_text)
+
 
 
 def main():
-    
-    formatted_output(frankenstein_book_text)
+    book_text = get_book_text(sys.argv[1])
+    formatted_output(book_text)
 
 main()
